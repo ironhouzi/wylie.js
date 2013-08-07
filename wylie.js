@@ -88,32 +88,58 @@ var syllable = {
     secsuff: ""
 };
 
-var result = lex.check("\'", "k");
-console.log(result);
-  var result = lex.check("\'", "k");
-function translate(st, syl) {
-  syl.str = st;
-  var chars = '';
-    syl.str = st;
-	if(st.length == 1) {
-		syl.root = st;
-    if(st in vowels)
-      syl.vowel = st;
-	}
-	else {
-    chars = st.split('');
-	}
-      chars = st.split('');
-  if(st.length == 2) {
-    if(!(chars[0] in prefixes)) {
-      
+var regex = {
+    // Single letter with no vowel modifier
+    one:  /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']{1}a?$/,
+    // Single letter with common vowel modifier
+    two:  /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
+    // Single letter with prefix and no vowel modifier
+    three_pre:  /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)a?$|^([gdbm']{1})([kgcjtdnpbmwzmyrlsh'])a?$/,
+    // Single letter with prefix and common vowel modifier
+    three_pre_vow:  /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^([gdbm']{1})[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
+    // Single letter with superscribed and no vowel modifier
+    three_supr:  /^(r?([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l?([kgjtdpbh]|ng|ch))a?$|^(s?([kgtdnpbm]|n[gy]|ts)a?)$/,
+    // Single letter with superscribed and common vowel modifier
+    three_supr_vow:  /^(r?([kgjtdnbm]|n[gy]|ts|dz))[iueo]{1}$|^(l?([kgjtdpbh]|ng|ch))[iueo]{1}$|^(s?([kgtdnpbm]|n[gy]|ts)[iueo]{1})$/
+};
+
+// Returns 1 if single character, 2 if multi and 0 for no match.
+function parse(s) {
+    if (regex.one.test(s))
+        return 1;
+    else if (regex.two.test(s))
+        return 2;
+    else if (regex.three_pre.test(s))
+        return 3;
+    else if (regex.three_pre_vow.test(s))
+        return 4;
+    else if (regex.three_supr.test(s))
+        return 5;
+    else if (regex.three_supr_vow.test(s))
+        return 6;
+    else
+        return 0;
+}
+
+function forEach(array, action) {
+    for (var i = 0; i < array.length; i++) {
+        action(array[i]);
     }
-  }
-  var i = 0;
-  for(var s in chars) {
-    if(s in vowels){
-      syl.vowel = s;
-      syl.root = (i > 0) ? chars[i - 1] : chars[i];
+}
+
+function map(func, array) {
+    var result = [];
+    forEach (array, function(elem) {
+        result.push(func(elem));
+    });
+    return result;
+}
+
+
+function test(s) {
+    var result = (map(parse, s));
+    for (var i = 0; i < result.length; i++) {
+        console.log(s[i] + ":" + result[i]);
     }
 }
 
