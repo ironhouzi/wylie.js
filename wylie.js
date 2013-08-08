@@ -28,7 +28,15 @@ var alph  = [   'k', 'kh', 'g', 'ng',
 
 var words = [   "sha", "ra", "ri", "gzhi", "mi", "sangs",
                 "bra", "rta", "lha", "snga", "sng", "rk",
-                "slu", "rji", "sde", "spe", "lgo"
+                "slu", "rji", "sde", "spe", "lgo", "rnya",
+                "rtsa", "rdza", "rnyi", "rtso", "rdzu",
+                "lnga", "lngo", "lho", "stsad", "smo",
+                "snge", "sngo", "kya", "khya", "phya",
+                "mya", "dra", "khra", "phra", "sla",
+                "nywa", "tshwa", "tswa", "zhwa", "shwa",
+                "kyi", "khyo", "phyo", "myu", "dre",
+                "khro", "phru", "slu", "nywe", "tshwi",
+                "tswo", "zhwi", "shwo"
             ];
 
 var lex = {
@@ -90,17 +98,21 @@ var syllable = {
 
 var regex = {
     // Single letter with no vowel modifier
-    one:  /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']{1}a?$/,
+    one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']{1}a?$/,
     // Single letter with common vowel modifier
-    two:  /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
-    // Single letter with prefix and no vowel modifier
-    three_pre:  /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)a?$|^([gdbm']{1})([kgcjtdnpbmwzmyrlsh'])a?$/,
-    // Single letter with prefix and common vowel modifier
-    three_pre_vow:  /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^([gdbm']{1})[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
-    // Single letter with superscribed and no vowel modifier
-    three_supr:  /^(r?([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l?([kgjtdpbh]|ng|ch))a?$|^(s?([kgtdnpbm]|n[gy]|ts)a?)$/,
-    // Single letter with superscribed and common vowel modifier
-    three_supr_vow:  /^(r?([kgjtdnbm]|n[gy]|ts|dz))[iueo]{1}$|^(l?([kgjtdpbh]|ng|ch))[iueo]{1}$|^(s?([kgtdnpbm]|n[gy]|ts)[iueo]{1})$/
+    two: /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
+    // Prefix with no vowel modifier
+    three_pre: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)a?$|^([gdbm']{1})([kgcjtdnpbmzmsh'])a?$/,
+    // Prefix with common vowel modifier
+    three_pre_vow: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^([gdbm']{1})[kgcjtdnpbmzmsh']{1}[iueo]{1}$/,
+    // Superscribed with no vowel modifier
+    three_supr: /^(r?([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l?([kgcjtdpbh]|ng|ch))a?$|^(s?([kgtdnpbm]|n[gy]|ts)a?)$/,
+    // Superscribed with common vowel modifier
+    three_supr_vow: /^(r?([kgjtdnbm]|n[gy]|ts|dz))[iueo]{1}$|^(l?([kgcjtdpbh]|ng|ch))[iueo]{1}$|^(s?([kgtdnpbm]|n[gy]|ts)[iueo]{1})$/,
+    // Subscribed with no vowel modifier
+    three_sub: /^([kgpbmh]|[kp]h)y{1}a?$|^([kgtdnpbmsh]|[ktp]h)r{1}a?$|^([kgbrsz])l{1}a?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}a?$/,
+    // Subscribed with common vowel modifier
+    three_sub_vow: /^([kgpbmh]|[kp]h)y{1}[iueo]{1}?$|^([kgtdnpbmsh]|[ktp]h)r{1}[iueo]{1}?$|^([kgbrsz])l{1}[iueo]{1}?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}[iueo]{1}?$/
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
@@ -117,6 +129,10 @@ function parse(s) {
         return 5;
     else if (regex.three_supr_vow.test(s))
         return 6;
+    else if (regex.three_sub.test(s))
+        return 7;
+    else if (regex.three_sub_vow.test(s))
+        return 8;
     else
         return 0;
 }
