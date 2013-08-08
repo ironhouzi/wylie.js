@@ -26,18 +26,6 @@ var alph  = [   'k', 'kh', 'g', 'ng',
                 'h'
             ];
 
-var words = [   "sha", "ra", "ri", "gzhi", "mi", "sangs",
-                "bra", "rta", "lha", "snga", "sng", "rk",
-                "slu", "rji", "sde", "spe", "lgo", "rnya",
-                "rtsa", "rdza", "rnyi", "rtso", "rdzu",
-                "lnga", "lngo", "lho", "stsad", "smo",
-                "snge", "sngo", "kya", "khya", "phya",
-                "mya", "dra", "khra", "phra", "sla",
-                "nywa", "tshwa", "tswa", "zhwa", "shwa",
-                "kyi", "khyo", "phyo", "myu", "dre",
-                "khro", "phru", "slu", "nywe", "tshwi",
-                "tswo", "zhwi", "shwo"
-            ];
 
 var lex = {
     k: 0,   kh: 1, g: 2,    ng: 3,
@@ -114,8 +102,6 @@ var regex = {
     // Subscribed with common vowel modifier
     three_sub_vow: /^([kgpbmh]|[kp]h)y{1}[iueo]{1}?$|^([kgtdnpbmsh]|[ktp]h)r{1}[iueo]{1}?$|^([kgbrsz])l{1}[iueo]{1}?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}[iueo]{1}?$/
 };
-
-exports.regex = Object.create(regex);
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
 function parse(s) {

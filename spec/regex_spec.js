@@ -1,7 +1,7 @@
 reg = require ("../wylie.js");
 
 function forEach(array, check, exp, state) {
-    for(var i = 0; i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         if(state)
             check(array[i]).toMatch(exp);
         else
