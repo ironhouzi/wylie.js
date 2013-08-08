@@ -90,7 +90,7 @@ var regex = {
     // Single letter with common vowel modifier
     two: /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
     // Prefix with no vowel modifier
-    three_pre: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)a?$|^([gdbm']{1})([kgcjtdnpbmzmsh'])a?$/,
+    three_pre: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz){1}a?$|^([gdbm']{1})([kgcjtdnpbmmsh'])a?$/,
     // Prefix with common vowel modifier
     three_pre_vow: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^([gdbm']{1})[kgcjtdnpbmzmsh']{1}[iueo]{1}$/,
     // Superscribed with no vowel modifier
@@ -147,7 +147,10 @@ function test(s) {
     }
 }
 
-test(words);
+exports.regex = Object.create(regex);
+exports.alpha = Object.create(alpha);
+exports.alph = Object.create(alph);
+exports.map = Object.create(map);
 
 // var result = lex.check("\'", "k");
 // console.log(result);
