@@ -12,16 +12,13 @@ function forEach(array, check, exp, state) {
 
 describe("Testing regex", function() {
 
-    regex = {};
-    beforeEach(function() {
-        var regex = Object.create(reg.regex);
-    });
+    var r= reg.regex;
 
     it("Checks single letter with no wovel", function() {
         var true_words = ["sha", "ra"];
         var false_words = ["she", "ri", "rad"];
 
-        forEach(true_words, expect, regex.one, true);
-        forEach(false_words, expect, regex.one, false);
+        forEach(true_words, expect, r.one, true);
+        forEach(false_words, expect, r.one, false);
     });
 });

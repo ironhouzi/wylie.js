@@ -115,6 +115,8 @@ var regex = {
     three_sub_vow: /^([kgpbmh]|[kp]h)y{1}[iueo]{1}?$|^([kgtdnpbmsh]|[ktp]h)r{1}[iueo]{1}?$|^([kgbrsz])l{1}[iueo]{1}?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}[iueo]{1}?$/
 };
 
+exports.regex = Object.create(regex);
+
 // Returns 1 if single character, 2 if multi and 0 for no match.
 function parse(s) {
     if (regex.one.test(s))
