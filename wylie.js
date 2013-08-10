@@ -86,13 +86,14 @@ var syllable = {
 
 var regex = {
     // Single letter with no vowel modifier
-    one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']{1}a?$/,
+    one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']a?$/,
+    // one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']{1}a?$/,
     // Single letter with common vowel modifier
-    two: /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^[kgcjtdnpbmwzmyrlsh']{1}[iueo]{1}$/,
-    // Prefix with no vowel modifier
-    three_pre: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz){1}a?$|^([gdbm']{1})([kgcjtdnpbmmsh'])a?$/,
+    two: /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?=dza)$|^[kgcjtdnpbmwzmyrlsh'][iueo]$/,
+    // Prefix with no vowel
+    three_pre: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)a?$|^(?!dz)a?^([gdbm'])([kgcjtdnpbzmsh'])a?$/,
     // Prefix with common vowel modifier
-    three_pre_vow: /^([gdbm']{1})([kctpzs]h|n[gy]|tsh?|dz)[iueo]{1}$|^([gdbm']{1})[kgcjtdnpbmzmsh']{1}[iueo]{1}$/,
+    three_pre_vow: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?!dz[iueo])^([gdbm'])[kgcjtdnpbzmsh'][iueo]$/,
     // Superscribed with no vowel modifier
     three_supr: /^(r?([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l?([kgcjtdpbh]|ng|ch))a?$|^(s?([kgtdnpbm]|n[gy]|ts)a?)$/,
     // Superscribed with common vowel modifier
