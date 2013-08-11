@@ -95,9 +95,9 @@ var regex = {
     // Prefix with common vowel modifier
     three_pre_vow: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?!dz[iueo])^([gdbm'])[kgcjtdnpbzmsh'][iueo]$/,
     // Superscribed with no vowel modifier
-    three_supr: /^(r?([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l?([kgcjtdpbh]|ng|ch))a?$|^(s?([kgtdnpbm]|n[gy]|ts)a?)$/,
+    three_supr: /^(r([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l([kgcjtdpbh]|ng|ch))a?$|^(s([kgtdnpbm]|n[gy]|ts)a?)$/,
     // Superscribed with common vowel modifier
-    three_supr_vow: /^(r?([kgjtdnbm]|n[gy]|ts|dz))[iueo]{1}$|^(l?([kgcjtdpbh]|ng|ch))[iueo]{1}$|^(s?([kgtdnpbm]|n[gy]|ts)[iueo]{1})$/,
+    three_supr_vow: /^(r([kgjtdnbm]|n[gy]|ts|dz))[iueo]$|^(l([kgcjtdpbh]|ng|ch))[iueo]$|^(s([kgtdnpbm]|n[gy]|ts)[iueo])$/,
     // Subscribed with no vowel modifier
     three_sub: /^([kgpbmh]|[kp]h)y{1}a?$|^([kgtdnpbmsh]|[ktp]h)r{1}a?$|^([kgbrsz])l{1}a?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}a?$/,
     // Subscribed with common vowel modifier
