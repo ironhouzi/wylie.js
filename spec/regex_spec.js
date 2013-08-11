@@ -85,6 +85,20 @@ var supr = [
     "sta"
 ];
 
+var supr_vow = [
+    "lbe", "lbi", "lbu", "lce", "lci", "lco", "lcu",
+    "lde", "ldi", "ldo", "ldu", "lgo", "lhe", "lho",
+    "lhu", "lji", "lko", "lku", "lnge", "lngi", "lte",
+    "lti", "lto", "rbe", "rbo", "rbu", "rde", "rdi",
+    "rdo", "rdu", "rdze", "rdzi", "rdzo", "rdzu", "rge",
+    "rgo", "rgu", "rje", "rji", "rjo", "rju", "rke",
+    "rko", "rku", "rme", "rmi", "rmo", "rmu", "rnge",
+    "rngo", "rngu", "rni", "rno", "rte", "rti", "rto",
+    "rtse", "rtsi", "rtso", "sbe", "sbi", "sbo", "sbu",
+    "sde", "sdi", "sdo", "sdu", "sge", "sgi", "sgo",
+    "sgu", "snge", "sngo",
+];
+
 var r = reg.regex;
 
 // k(a), g(a), ng(a), h(a), tsh(a), etc..
@@ -374,6 +388,69 @@ describe("Test superscribed syllable, no vowel.", function() {
     xit("Checks for false positives: has supersribed and vowel", function() {
         forEach([], expect, exp, false);
     });
+
+    xit("Checks for false positives: has subscript", function() {
+        forEach([], expect, exp, false);
+    });
+
+    xit("Checks for false positives: has subscript and vowel ", function() {
+        forEach([], expect, exp, false);
+    });
+
+});
+
+// lho, ltu, rte, rku, sngo, etc.
+describe("Test superscribed syllable with vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.three_supr_vow;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(supr_vow, expect, exp, true);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+//TODO Add checks!
 
     xit("Checks for false positives: has subscript", function() {
         forEach([], expect, exp, false);
