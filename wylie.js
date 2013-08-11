@@ -99,9 +99,9 @@ var regex = {
     // Superscribed with common vowel modifier
     three_supr_vow: /^(r([kgjtdnbm]|n[gy]|ts|dz))[iueo]$|^(l([kgcjtdpbh]|ng|ch))[iueo]$|^(s([kgtdnpbm]|n[gy]|ts)[iueo])$/,
     // Subscribed with no vowel modifier
-    three_sub: /^([kgpbmh]|[kp]h)y{1}a?$|^([kgtdnpbmsh]|[ktp]h)r{1}a?$|^([kgbrsz])l{1}a?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}a?$/,
+    three_sub: /^([kgpbmh]|[kp]h)ya?$|^([kgtdnpbmsh]|[ktp]h)ra?$|^([kgbrsz])la?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)wa?$/,
     // Subscribed with common vowel modifier
-    three_sub_vow: /^([kgpbmh]|[kp]h)y{1}[iueo]{1}?$|^([kgtdnpbmsh]|[ktp]h)r{1}[iueo]{1}?$|^([kgbrsz])l{1}[iueo]{1}?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w{1}[iueo]{1}?$/
+    three_sub_vow: /^([kgpbmh]|[kp]h)y[iueo]?$|^([kgtdnpbmsh]|[ktp]h)r[iueo]?$|^([kgbrsz])l[iueo]?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.

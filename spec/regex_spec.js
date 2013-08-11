@@ -21,15 +21,10 @@ function addvow() {
 }
 
 var sin_sub = [
-    "bla", "bra", "bya", "bza", "cha", "dra", "dva", "dwa", "dza",
-    "gla", "gra", "gva", "gwa", "gya", "gza", "hra", "hva", "hwa",
-    "hya", "kha", "kla", "kra", "ksa", "kwa", "kya", "l'a", "lba",
-    "lca", "lda", "lga", "lha", "lka", "lpa", "lta", "lva", "lwa",
-    "mra", "mya", "nga", "nya", "pha", "pra", "pya", "r'a", "rba",
-    "rda", "rga", "rja", "rka", "rla", "rma", "rna", "rta", "rva",
-    "rwa", "rya", "sba", "sda", "sga", "sha", "ska", "sla", "sma",
-    "sna", "spa", "sra", "sta", "sva", "swa", "sya", "tha", "tra",
-    "tsa", "tva", "twa", "tya", "zha", "zla", "zwa"
+    "bla", "bra", "bya", "dra", "dwa", "gla", "gra", "gwa", "gya",
+    "hra", "hwa", "hya", "kla", "kra", "kwa", "kya", "lwa", "mra",
+    "mya", "pra", "pya", "rla", "rwa", "sla", "sra", "tra", "zla",
+    "zwa", "phya"
 ];
 
 var pre = [
@@ -98,6 +93,22 @@ var supr_vow = [
     "rtse", "rtsi", "rtso", "sbe", "sbi", "sbo", "sbu",
     "sde", "sdi", "sdo", "sdu", "sge", "sgi", "sgo",
     "sgu", "snge", "sngo",
+];
+
+var sub_vow = [
+    "ble", "bli", "blo", "blu", "bre", "bri", "bro",
+    "bru", "bye", "byi", "byo", "byu", "dre", "dri",
+    "dro", "dru", "gle", "gli", "glo", "glu", "gre",
+    "gri", "gro", "gru", "gwo", "gye", "gyi", "gyo",
+    "gyu", "hre", "hri", "hro", "hru", "hyi", "khre",
+    "khri", "khro", "khru", "khye", "khyi", "khyo", "khyu",
+    "kli", "klo", "klu", "kre", "kri", "kro", "kru",
+    "kye", "kyi", "kyo", "kyu", "lwi", "lwo", "mre",
+    "mri", "mro", "mye", "myi", "myo", "myu", "nri",
+    "nro", "phri", "phro", "phru", "phye", "phyi", "phyo",
+    "phyu", "pre", "pri", "pru", "pyi", "rlo", "rlu",
+    "shwo", "sle", "sli", "slo", "slu", "sre", "sri",
+    "sro", "sru", "tre", "tri", "tro", "tru", "tswo", "zlo"
 ];
 
 var r = reg.regex;
@@ -459,6 +470,130 @@ describe("Test superscribed syllable with vowel.", function() {
 
     xit("Checks for false positives: has subscript and vowel ", function() {
         forEach([], expect, exp, false);
+    });
+
+});
+
+// bla, sla, gya
+describe("Test subscribed syllable, no vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.three_sub;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(sin_sub, expect, exp, true);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+//TODO Add checks!
+
+    xit("Checks for false positives: has subscript and vowel ", function() {
+        forEach([], expect, exp, false);
+    });
+
+});
+
+// blo, slu, gyo, tshwa, etc
+describe("Test subscribed syllable with vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.three_sub_vow;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(sub_vow, expect, exp, true);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
+        forEach(sin_sub, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
     });
 
 });
