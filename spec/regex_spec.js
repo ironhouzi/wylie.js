@@ -57,6 +57,7 @@ var pre_vow = [
     "mcho", "mchu", "mci", "mdo", "mdze", "mdzo", "mdzu", "mgo", "mgu",
     "mje", "mkhe", "mkho", "mkhu", "mko", "mngo", "mno", "mnye", "mnyo",
     "mthe", "mtho", "mthu", "mtse", "mtshe", "mtsho", "mtso"
+    // , "g.yi", "g.yo", "g.yu"
 ];
 
 var sin_vow = [
