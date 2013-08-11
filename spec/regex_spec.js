@@ -152,17 +152,16 @@ describe("Test single letter with no vowel modifier", function() {
         forEach(supr, expect, exp, false);
     });
 
-//TODO Add checks!
-    xit("Checks for false positives: has supersribed and vowel", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has supersribed and vowel", function() {
+        forEach(supr_vow, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript", function() {
+        forEach(sin_sub, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript and vowel ", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript and vowel ", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
 });
@@ -210,17 +209,16 @@ describe("Test single letter with common vowel modifier", function() {
         forEach(supr, expect, exp, false);
     });
 
-//TODO Add checks!
-    xit("Checks for false positives: has supersribed and vowel", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has supersribed and vowel", function() {
+        forEach(supr_vow, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript", function() {
+        forEach(sin_sub, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript and vowel ", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript and vowel ", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
 });
@@ -334,17 +332,16 @@ describe("Test prefix and common vowel modifier", function() {
         forEach(supr, expect, exp, false);
     });
 
-//TODO Add checks!
-    xit("Checks for false positives: has supersribed and vowel", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has supersribed and vowel", function() {
+        forEach(supr_vow, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript", function() {
+        forEach(sin_sub, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript and vowel ", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript and vowel ", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
 });
@@ -396,17 +393,16 @@ describe("Test superscribed syllable, no vowel.", function() {
         forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
     });
 
-//TODO Add checks!
-    xit("Checks for false positives: has supersribed and vowel", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has supersribed and vowel", function() {
+        forEach(supr_vow, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript", function() {
+        forEach(sin_sub, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript and vowel ", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript and vowel ", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
 });
@@ -462,14 +458,12 @@ describe("Test superscribed syllable with vowel.", function() {
         forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
     });
 
-//TODO Add checks!
-
-    xit("Checks for false positives: has subscript", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript", function() {
+        forEach(sin_sub, expect, exp, false);
     });
 
-    xit("Checks for false positives: has subscript and vowel ", function() {
-        forEach([], expect, exp, false);
+    it("Checks for false positives: has subscript and vowel ", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
 });
@@ -487,6 +481,10 @@ describe("Test subscribed syllable, no vowel.", function() {
 
     it("Standard", function() {
         forEach(sin_sub, expect, exp, true);
+    });
+
+    it("Checks for false positives: has subscript and vowel ", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
     it("Check false positive: superscribed with vowel", function() {
@@ -527,12 +525,6 @@ describe("Test subscribed syllable, no vowel.", function() {
 
     it("Checks for false positives: has suffix", function() {
         forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
-    });
-
-//TODO Add checks!
-
-    xit("Checks for false positives: has subscript and vowel ", function() {
-        forEach([], expect, exp, false);
     });
 
 });
