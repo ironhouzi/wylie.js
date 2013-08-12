@@ -102,7 +102,9 @@ var regex = {
     // Subscribed with common vowel modifier
     three_sub_vow: /^([kgpbmh]|[kp]h)y[iueo]?$|^([kgtdnpbmsh]|[ktp]h)r[iueo]?$|^([kgbrsz])l[iueo]?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/,
     // Supersribed and subscribed with no vowel modifier
-    sup_sub: /^(r(([kgbm]ya?)|([kgnbm]ra?)|([kgb]la?)|(([kg]|ts|ny)wa?)))$|^(l(([kgpbh]ya?)|([kgdpbh]ra?)|([kgb]la?)|([kgdlh]wa?)))$|^(s(([kgpbm]ya?)|([kgtdnpbm]ra?)|([kgb]la?)|([kgd](ts|ny)wa?)))$/
+    sup_sub: /^(r(([kgbm]ya?)|([kgnbm]ra?)|([kgb]la?)|(([kg]|ts|ny)wa?)))$|^(l(([kgpbh]ya?)|([kgdpbh]ra?)|([kgb]la?)|([kgdlh]wa?)))$|^(s(([kgpbm]ya?)|([kgtdnpbm]ra?)|([kgb]la?)|([kgd](ts|ny)wa?)))$/,
+    // Supersribed and subscribed with common vowel modifier
+    sup_sub_vow: /^(r(([kgbm]y[iueo])|([kgnbm]r[iueo])|([kgb]l[iueo])|(([kg]|ts|ny)w[iueo])))$|^(l(([kgpbh]y[iueo])|([kgdpbh]r[iueo])|([kgb]l[iueo])|([kgdlh]w[iueo])))$|^(s(([kgpbm]y[iueo])|([kgtdnpbm]r[iueo])|([kgb]l[iueo])|([kgd](ts|ny)w[iueo])))$/
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.

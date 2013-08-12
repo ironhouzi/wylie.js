@@ -26,6 +26,15 @@ var sup_sub = [
     "spra", "spya", "rtswa"
 ];
 
+
+var sup_sub_vow = [
+    "lgro", "rgro", "rgyo", "rgyu", "rkyu", "rmyi", "sbre",
+    "sbru", "sbyi", "sgre", "sgri", "sgro", "sgru", "sgye",
+    "sgyo", "sgyu", "skre", "skri", "skru", "skye", "skyi",
+    "skyo", "skyu", "smre", "smri", "smye", "smyi", "smyo",
+    "smyu", "spre", "spri", "spro", "spru", "spyi", "spyo"
+];
+
 var sin_sub = [
     "bla", "bra", "bya", "dra", "dwa", "gla", "gra", "gwa", "gya",
     "hra", "hwa", "hya", "kla", "kra", "kwa", "kya", "lwa", "mra",
@@ -535,11 +544,11 @@ describe("Test subscribed syllable, no vowel.", function() {
 
 });
 
-// skya, rmya, etc
+// 
 describe("Test subscribed syllable with vowel.", function() {
 
     var singlevow = [];
-    var exp = r.sup_sub;
+    var exp = r.three_sub_vow;
 
     beforeEach(function() {
         singlevow = addvow();
@@ -547,11 +556,7 @@ describe("Test subscribed syllable with vowel.", function() {
 
 
     it("Standard", function() {
-        forEach(sup_sub, expect, exp, true);
-    });
-
-    it("Check false positives: subscribed with vowel", function() {
-        forEach(sub_vow, expect, exp, false);
+        forEach(sub_vow, expect, exp, true);
     });
 
     it("Check false positive: subscribed and no vowel", function() {
@@ -601,7 +606,7 @@ describe("Test subscribed syllable with vowel.", function() {
 });
 
 // blo, slu, gyo, tshwa, etc
-describe("Test subscribed syllable with vowel.", function() {
+describe("Test super- and subscribed with no vowel.", function() {
 
     var singlevow = [];
     var exp = r.sup_sub;
@@ -613,6 +618,71 @@ describe("Test subscribed syllable with vowel.", function() {
 
     it("Standard", function() {
         forEach(sup_sub, expect, exp, true);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
+        forEach(sin_sub, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+});
+
+// blo, slu, gyo, tshwo, etc
+describe("Test super- and subscribed with vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.sup_sub_vow;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(sup_sub_vow, expect, exp, true);
+    });
+
+    it("Check false positive: super, sub and no vowel", function() {
+        forEach(sup_sub, expect, exp, false);
     });
 
     it("Check false positive: subscribed and no vowel", function() {
