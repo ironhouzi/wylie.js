@@ -20,6 +20,12 @@ function addvow() {
     return result;
 }
 
+var sup_sub = [
+    "rbya", "rgra", "rgya", "rkya", "rmya",
+    "sbra", "sgra", "sgya", "skra", "skya", "smra", "smya",
+    "spra", "spya", "rtswa"
+];
+
 var sin_sub = [
     "bla", "bra", "bya", "dra", "dwa", "gla", "gra", "gwa", "gya",
     "hra", "hwa", "hya", "kla", "kra", "kwa", "kya", "lwa", "mra",
@@ -529,11 +535,11 @@ describe("Test subscribed syllable, no vowel.", function() {
 
 });
 
-// blo, slu, gyo, tshwa, etc
+// skya, rmya, etc
 describe("Test subscribed syllable with vowel.", function() {
 
     var singlevow = [];
-    var exp = r.three_sub_vow;
+    var exp = r.sup_sub;
 
     beforeEach(function() {
         singlevow = addvow();
@@ -541,7 +547,11 @@ describe("Test subscribed syllable with vowel.", function() {
 
 
     it("Standard", function() {
-        forEach(sub_vow, expect, exp, true);
+        forEach(sup_sub, expect, exp, true);
+    });
+
+    it("Check false positives: subscribed with vowel", function() {
+        forEach(sub_vow, expect, exp, false);
     });
 
     it("Check false positive: subscribed and no vowel", function() {
@@ -590,67 +600,63 @@ describe("Test subscribed syllable with vowel.", function() {
 
 });
 
-xdescribe("Test single letter with common vowel modifier", function() {
+// blo, slu, gyo, tshwa, etc
+describe("Test subscribed syllable with vowel.", function() {
 
     var singlevow = [];
-    var exp = r.two;
+    var exp = r.sup_sub;
 
     beforeEach(function() {
         singlevow = addvow();
     });
 
-    it("Checks prefix with no vowel modifier", function() {
-        var false_words = ["tram", "ram", "rma"];
-        var exp = r.three_pre;
 
-        forEach(singlevow, expect, exp, false);
-        forEach(pre, expect, exp, true);
-        forEach(false_words, expect, exp, false);
-        forEach(reg.alpha, expect, exp, false);
-        forEach(reg.alph, expect, exp, false);
+    it("Standard", function() {
+        forEach(sup_sub, expect, exp, true);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
         forEach(sin_sub, expect, exp, false);
     });
 
-    it("Checks prefix with common vowel modifier", function() {
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
 
-        var exp = r.three_pre_vow;
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
 
-        forEach(singlevow, expect, exp, false);
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
         forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
         forEach(reg.alph, expect, exp, false);
-        forEach(sin_sub, expect, exp, false);
-        forEach(pre_vow, expect, exp, true);
     });
 
-    xit("Checks single letter with no wovel", function() {
-        var true_words = ["sha", "ra"];
-        var false_words = ["she", "ri", "rad"];
-
-        forEach(true_words, expect, r.one, true);
-        forEach(false_words, expect, r.one, false);
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
     });
 
-    xit("Checks single letter with no wovel", function() {
-        var true_words = ["sha", "ra"];
-        var false_words = ["she", "ri", "rad"];
-
-        forEach(true_words, expect, r.one, true);
-        forEach(false_words, expect, r.one, false);
+    it("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
     });
 
-    xit("Checks single letter with no wovel", function() {
-        var true_words = ["sha", "ra"];
-        var false_words = ["she", "ri", "rad"];
-
-        forEach(true_words, expect, r.one, true);
-        forEach(false_words, expect, r.one, false);
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
     });
 
-    xit("Checks single letter with no wovel", function() {
-        var true_words = ["sha", "ra"];
-        var false_words = ["she", "ri", "rad"];
-
-        forEach(true_words, expect, r.one, true);
-        forEach(false_words, expect, r.one, false);
-    });
 });

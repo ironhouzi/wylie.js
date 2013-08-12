@@ -87,7 +87,6 @@ var syllable = {
 var regex = {
     // Single letter with no vowel modifier
     one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']a?$/,
-    // one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']{1}a?$/,
     // Single letter with common vowel modifier
     two: /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?=dza)$|^[kgcjtdnpbmwzmyrlsh'][iueo]$/,
     // Prefix with no vowel
@@ -101,7 +100,9 @@ var regex = {
     // Subscribed with no vowel modifier
     three_sub: /^([kgpbmh]|[kp]h)ya?$|^([kgtdnpbmsh]|[ktp]h)ra?$|^([kgbrsz])la?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)wa?$/,
     // Subscribed with common vowel modifier
-    three_sub_vow: /^([kgpbmh]|[kp]h)y[iueo]?$|^([kgtdnpbmsh]|[ktp]h)r[iueo]?$|^([kgbrsz])l[iueo]?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/
+    three_sub_vow: /^([kgpbmh]|[kp]h)y[iueo]?$|^([kgtdnpbmsh]|[ktp]h)r[iueo]?$|^([kgbrsz])l[iueo]?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/,
+    // Supersribed and subscribed with no vowel modifier
+    sup_sub: /^(r(([kgbm]ya?)|([kgnbm]ra?)|([kgb]la?)|(([kg]|ts|ny)wa?)))$|^(l(([kgpbh]ya?)|([kgdpbh]ra?)|([kgb]la?)|([kgdlh]wa?)))$|^(s(([kgpbm]ya?)|([kgtdnpbm]ra?)|([kgb]la?)|([kgd](ts|ny)wa?)))$/
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
