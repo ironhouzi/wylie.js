@@ -104,7 +104,9 @@ var regex = {
     // Supersribed and subscribed with no vowel modifier
     sup_sub: /^(r(([kgbm]ya?)|([kgnbm]ra?)|([kgb]la?)|(([kg]|ts|ny)wa?)))$|^(l(([kgpbh]ya?)|([kgdpbh]ra?)|([kgb]la?)|([kgdlh]wa?)))$|^(s(([kgpbm]ya?)|([kgtdnpbm]ra?)|([kgb]la?)|([kgd](ts|ny)wa?)))$/,
     // Supersribed and subscribed with common vowel modifier
-    sup_sub_vow: /^(r(([kgbm]y[iueo])|([kgnbm]r[iueo])|([kgb]l[iueo])|(([kg]|ts|ny)w[iueo])))$|^(l(([kgpbh]y[iueo])|([kgdpbh]r[iueo])|([kgb]l[iueo])|([kgdlh]w[iueo])))$|^(s(([kgpbm]y[iueo])|([kgtdnpbm]r[iueo])|([kgb]l[iueo])|([kgd](ts|ny)w[iueo])))$/
+    sup_sub_vow: /^(r(([kgbm]y[iueo])|([kgnbm]r[iueo])|([kgb]l[iueo])|(([kg]|ts|ny)w[iueo])))$|^(l(([kgpbh]y[iueo])|([kgdpbh]r[iueo])|([kgb]l[iueo])|([kgdlh]w[iueo])))$|^(s(([kgpbm]y[iueo])|([kgtdnpbm]r[iueo])|([kgb]l[iueo])|([kgd](ts|ny)w[iueo])))$/,
+    // Prefix with suffix.
+    pre_suf: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)a?([gdnbm'rls]|ng)$|^(?!dz)a?^([gdbm'])([kgcjtdnpbzmsh'])a?([gdnbm'rls]|ng)$/
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
