@@ -86,27 +86,27 @@ var syllable = {
 
 var regex = {
     // Single letter with no vowel modifier
-    one: /^([kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']a?$/,
+    one: /^(?:[kctpzs]h|n[gy]|tsh?|dz)a?$|^[kgcjtdnpbmwzmyrlsh']a?$/gm,
     // Single letter with common vowel modifier
-    two: /^([kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?=dza)$|^[kgcjtdnpbmwzmyrlsh'][iueo]$/,
+    two: /^(?:[kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?=dza)$|^[kgcjtdnpbmwzmyrlsh'][iueo]$/gm,
     // Prefix with no vowel
-    three_pre: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)a?$|^(?!dz)a?^([gdbm'])([kgcjtdnpbzmsh'])a?$/,
+    three_pre: /^([gdbm'])(?:[kctpzs]h|n[gy]|tsh?|dz)a?$|^(?!dz)a?^[gdbm'][kgcjtdnpbzmsh']a?$/gm,
     // Prefix with common vowel modifier
-    three_pre_vow: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?!dz[iueo])^([gdbm'])[kgcjtdnpbzmsh'][iueo]$/,
+    three_pre_vow: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?!dz[iueo])([gdbm'])[kgcjtdnpbzmsh'][iueo]$/gm,
     // Superscribed with no vowel modifier
-    three_supr: /^(r([kgjtdnbm]|n[gy]|ts|dz))a?$|^(l([kgcjtdpbh]|ng|ch))a?$|^(s([kgtdnpbm]|n[gy]|ts)a?)$/,
+    three_supr: /^(r(?:[kgjtdnbm]|n[gy]|ts|dz))a?$|^(l(?:[kgcjtdpbh]|ng|ch))a?$|^(s(?:[kgtdnpbm]|n[gy]|ts)a?)$/gm,
     // Superscribed with common vowel modifier
-    three_supr_vow: /^(r([kgjtdnbm]|n[gy]|ts|dz))[iueo]$|^(l([kgcjtdpbh]|ng|ch))[iueo]$|^(s([kgtdnpbm]|n[gy]|ts)[iueo])$/,
+    three_supr_vow: /^(r(?:[kgjtdnbm]|n[gy]|ts|dz))[iueo]$|^(l(?:[kgcjtdpbh]|ng|ch))[iueo]$|^(s(?:[kgtdnpbm]|n[gy]|ts)[iueo])$/gm,
     // Subscribed with no vowel modifier
-    three_sub: /^([kgpbmh]|[kp]h)ya?$|^([kgtdnpbmsh]|[ktp]h)ra?$|^([kgbrsz])la?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)wa?$/,
+    three_sub: /^(?:[kgpbmh]|[kp]h)ya?$|^(?:[kgtdnpbmsh]|[ktp]h)ra?$|^[kgbrsz]la?$|^(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)wa?$/gm,
     // Subscribed with common vowel modifier
-    three_sub_vow: /^([kgpbmh]|[kp]h)y[iueo]?$|^([kgtdnpbmsh]|[ktp]h)r[iueo]?$|^([kgbrsz])l[iueo]?$|^([kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/,
+    three_sub_vow: /^(?:[kgpbmh]|[kp]h)y[iueo]?$|^(?:[kgtdnpbmsh]|[ktp]h)r[iueo]?$|^[kgbrsz]l[iueo]?$|^(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/gm,
     // Supersribed and subscribed with no vowel modifier
-    sup_sub: /^(r(([kgbm]ya?)|([kgnbm]ra?)|([kgb]la?)|(([kg]|ts|ny)wa?)))$|^(l(([kgpbh]ya?)|([kgdpbh]ra?)|([kgb]la?)|([kgdlh]wa?)))$|^(s(([kgpbm]ya?)|([kgtdnpbm]ra?)|([kgb]la?)|([kgd](ts|ny)wa?)))$/,
+    sup_sub: /^(r([kgbm]ya?|[kgnbm]ra?|[kgb]la?|(?:[kg]|ts|ny)wa?))$|^(l([kgpbh]ya?|[kgdpbh]ra?|[kgb]la?|[kgdlh]wa?))$|^(s([kgpbm]ya?|[kgtdnpbm]ra?|[kgb]la?|[kgd](?:ts|ny)wa?))$/gm,
     // Supersribed and subscribed with common vowel modifier
-    sup_sub_vow: /^(r(([kgbm]y[iueo])|([kgnbm]r[iueo])|([kgb]l[iueo])|(([kg]|ts|ny)w[iueo])))$|^(l(([kgpbh]y[iueo])|([kgdpbh]r[iueo])|([kgb]l[iueo])|([kgdlh]w[iueo])))$|^(s(([kgpbm]y[iueo])|([kgtdnpbm]r[iueo])|([kgb]l[iueo])|([kgd](ts|ny)w[iueo])))$/,
+    sup_sub_vow: /^(r([kgbm]y[iueo]|[kgnbm]r[iueo]|[kgb]l[iueo]|(?:[kg]|ts|ny)w[iueo]))$|^(l([kgpbh]y[iueo]|[kgdpbh]r[iueo]|[kgb]l[iueo]|[kgdlh]w[iueo]))$|^(s([kgpbm]y[iueo]|[kgtdnpbm]r[iueo]|[kgb]l[iueo]|[kgd](?:ts|ny)w[iueo]))$/gm,
     // Prefix with suffix.
-    pre_suf: /^([gdbm'])([kctpzs]h|n[gy]|tsh?|dz)a?([gdnbm'rls]|ng)$|^(?!dz)a?^([gdbm'])([kgcjtdnpbzmsh'])a?([gdnbm'rls]|ng)$/,
+    pre_suf: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)a?(?:[gdnbm'rls]|ng)$|^(?!dz)a?^[gdbm'][kgcjtdnpbzmsh']a?(?:[gdnbm'rls]|ng)$/gm,
     // Prefix with suffix and vowel.
     pre_suf_vow: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)$|^(?!dz[iueo])[gdbm'][kgcjtdnpbzmsh'][iueo](?:[gdnbm'rls]|ng)$/gm
 };
