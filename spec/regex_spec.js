@@ -20,6 +20,46 @@ function addvow() {
     return result;
 }
 
+var suff2_vow = [
+    "bebs", "bems", "bobs", "bogs", "bubs", "bugs", "chegs",
+    "chems", "chibs", "chigs", "chims", "chobs", "chogs", "choms",
+    "chugs", "chums", "debs", "dims", "dogs", "doms", "dubs",
+    "dugs", "dzoms", "gebs", "gegs", "gems", "gigs", "gogs",
+    "goms", "gugs", "jigs", "jugs", "khebs", "khegs", "khobs",
+    "khogs", "khoms", "khugs", "khums", "kims", "kums", "legs",
+    "lobs", "logs", "lugs", "lums", "migs", "mobs", "mugs",
+    "negs", "nems", "ngogs", "ngoms", "nobs", "nogs", "noms",
+    "nyigs", "nyogs", "nyoms", "nyugs", "phebs", "phibs", "phigs",
+    "phobs", "phogs", "phubs", "phugs", "pibs", "regs", "rems",
+    "rigs", "rims", "rogs", "rubs", "rugs", "rums", "sebs",
+    "segs", "sems", "shibs", "shigs", "shobs", "shogs", "shoms",
+    "shubs", "shugs", "shums", "sigs", "sims", "sobs", "sogs",
+    "soms", "subs", "sugs", "sums", "thebs", "thegs", "thems",
+    "thibs", "thigs", "thims", "thobs", "thogs", "thoms", "thubs",
+    "thugs", "thums", "togs", "tsegs", "tsigs", "tsogs", "tsoms",
+    "tsubs", "tsugs", "yegs", "yibs", "yogs", "yugs", "zebs",
+    "zegs", "zhigs", "zhogs", "zhugs", "zhums", "zigs", "zugs"
+];
+
+var suff2 = [
+    "babs", "bags", "band", "chags", "chams", "dabs", "dags",
+    "dams", "dzabs", "dzags", "gags", "gams", "jabs", "jags",
+    "jams", "khams", "pags", "phags", "thabs", "thags", "thams",
+    "shabs", "shags", "shams", "hags", "babs", "bags", "dzabs",
+    "ngabs", "ngams", "nyabs", "tsags", "tsams", "shags", "shams",
+    "ngags", "ngams", "tsags", "tsabs", "tsags", "tsams", "zhabs",
+    "zhags", "zhams", "chabs", "chags", "chams", "dags", "dams",
+    "ngags", "dzags", "yabs", "gags", "nyags", "shags", "shams",
+    "tsags", "zhabs", "zhags", "hags", "jags", "kams", "khabs",
+    "khams", "labs", "lags", "lams", "ngags", "mand", "chams",
+    "khams", "thams", "shags", "shams", "nabs", "nags", "nams",
+    "pags", "phabs", "phags", "phams", "rabs", "rags", "rams",
+    "rand", "dzags", "ngabs", "ngams", "tsabs", "tsags", "tsams",
+    "sags", "sams", "shabs", "shags", "shams", "ngabs", "ngags",
+    "thabs", "thags", "thams", "tsabs", "tsags", "tsams", "shabs",
+    "shags", "shams", "wags", "yags", "yams", "zabs", "zags",
+    "zand", "zhabs", "zhags", "zhams"
+];
 
 var pre_suf = [
     "'bang", "'dang", "'gang", "'jang", "'sang", "bcang", "bdang",
@@ -922,6 +962,164 @@ describe("Test prefix suffix and vowel.", function() {
 
     it("Standard", function() {
         forEach(pre_suf_vow, expect, exp, true);
+    });
+
+    it("Check false positive: pre-/suffix and no vowel", function() {
+        forEach(pre_suf, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub with vowel", function() {
+        forEach(sup_sub_vow, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub and no vowel", function() {
+        forEach(sup_sub, expect, exp, false);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
+        forEach(sin_sub, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    xit("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+});
+
+// babs, etc
+describe("Test Suffix, 2nd suffix with no vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.suff2;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(suff2, expect, exp, true);
+    });
+
+    it("Check false positive: pre-/suffix with vowel", function() {
+        forEach(pre_suf_vow, expect, exp, false);
+    });
+
+    it("Check false positive: pre-/suffix and no vowel", function() {
+        forEach(pre_suf, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub with vowel", function() {
+        forEach(sup_sub_vow, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub and no vowel", function() {
+        forEach(sup_sub, expect, exp, false);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
+        forEach(sin_sub, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    xit("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+});
+
+// bibs, etc
+describe("Test Suffix, 2nd suffix with vowel modifier.", function() {
+
+    var singlevow = [];
+    var exp = r.suff2_vow;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(suff2_vow, expect, exp, true);
+    });
+
+    it("Check false positive: 2nd suffix and no vowel", function() {
+        forEach(suff2, expect, exp, false);
+    });
+
+    it("Check false positive: pre-/suffix with vowel", function() {
+        forEach(pre_suf_vow, expect, exp, false);
     });
 
     it("Check false positive: pre-/suffix and no vowel", function() {

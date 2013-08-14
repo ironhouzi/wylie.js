@@ -108,7 +108,11 @@ var regex = {
     // Prefix with suffix.
     pre_suf: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)a?(?:[gdnbm'rls]|ng)$|^(?!dz)a?^[gdbm'][kgcjtdnpbzmsh']a?(?:[gdnbm'rls]|ng)$/gm,
     // Prefix with suffix and vowel.
-    pre_suf_vow: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)$|^(?!dz[iueo])[gdbm'][kgcjtdnpbzmsh'][iueo](?:[gdnbm'rls]|ng)$/gm
+    pre_suf_vow: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)$|^(?!dz[iueo])[gdbm'][kgcjtdnpbzmsh'][iueo](?:[gdnbm'rls]|ng)$/gm,
+    // suffix and 2nd suffix with no vowel
+    suff2: /^(?:[kctpzs]h|n[gy]|tsh?|dz)a?(?:[gdnbm'rls]|ng)(?:s|d)$|^[kgcjtdnpbmwzmyrlsh']a?(?:[gdnbm'rls]|ng)(?:s|d)$/gm,
+    // suffix and 2nd suffix with vowel modifier
+    suff2_vow: /^(?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)(?:s|d)$|^[kgcjtdnpbmwzmyrlsh'][iueo](?:[gdnbm'rls]|ng)(?:s|d)$/gm
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
