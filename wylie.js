@@ -118,8 +118,8 @@ var regex = {
     suff2_vow: /^(?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)(?:s|d)$|^[kgcjtdnpbmwzmyrlsh'][iueo](?:[gdnbm'rls]|ng)(?:s|d)$/gm,
     // prefix, superscribed and no vowel
     pre_supr: /^(?!dz)a?[gdbm'](?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?$/gm,
-    // pre_supr: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?$|^(?!dz)a?^[gdbm'][kgcjtdnpbzmsh'](?:(r(?:[kgjtdnbm]|n[gy]|ts|dz))|(l(?:[kgcjtdpbh]|ng|ch))|(s(?:[kgtdnpbm]|n[gy]|ts)a?))a?$/gm
-    // (?:(r(?:[kgjtdnbm]|n[gy]|ts|dz))|(l(?:[kgcjtdpbh]|ng|ch))|(s(?:[kgtdnpbm]|n[gy]|ts)a?))
+    // prefix, superscribed with vowel
+    pre_supr_vow: /^(?!dz[ieuo])[gdbm'](?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))[ieuo]$/gm,
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
