@@ -115,7 +115,11 @@ var regex = {
     // suffix and 2nd suffix with no vowel
     suff2: /^(?:[kctpzs]h|n[gy]|tsh?|dz)a?(?:[gdnbm'rls]|ng)(?:s|d)$|^[kgcjtdnpbmwzmyrlsh']a?(?:[gdnbm'rls]|ng)(?:s|d)$/gm,
     // suffix and 2nd suffix with vowel modifier
-    suff2_vow: /^(?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)(?:s|d)$|^[kgcjtdnpbmwzmyrlsh'][iueo](?:[gdnbm'rls]|ng)(?:s|d)$/gm
+    suff2_vow: /^(?:[kctpzs]h|n[gy]|tsh?|dz)[iueo](?:[gdnbm'rls]|ng)(?:s|d)$|^[kgcjtdnpbmwzmyrlsh'][iueo](?:[gdnbm'rls]|ng)(?:s|d)$/gm,
+    // prefix, superscribed and no vowel
+    pre_supr: /^(?!dz)a?[gdbm'](?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?$/gm,
+    // pre_supr: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?$|^(?!dz)a?^[gdbm'][kgcjtdnpbzmsh'](?:(r(?:[kgjtdnbm]|n[gy]|ts|dz))|(l(?:[kgcjtdpbh]|ng|ch))|(s(?:[kgtdnpbm]|n[gy]|ts)a?))a?$/gm
+    // (?:(r(?:[kgjtdnbm]|n[gy]|ts|dz))|(l(?:[kgcjtdpbh]|ng|ch))|(s(?:[kgtdnpbm]|n[gy]|ts)a?))
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
