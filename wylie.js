@@ -90,9 +90,10 @@ var regex = {
     // Single letter with common vowel modifier
     two: /^(?:[kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?=dza)$|^[kgcjtdnpbmwzmyrlsh'][iueo]$/gm,
     // Prefix with no vowel
-    three_pre: /^([gdbm'])(?:[kctpzs]h|n[gy]|tsh?|dz)a?$|^(?!dz)a?^[gdbm'][kgcjtdnpbzmsh']a?$/gm,
+    three_pre: /^(?!dz)a?[gdbm'](?:(?:[kctpzs]h|n[gy]|tsh?|dz)|[kgcjtdnpbzmsh'])a?$/gm,
     // Prefix with common vowel modifier
-    three_pre_vow: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?!dz[iueo])([gdbm'])[kgcjtdnpbzmsh'][iueo]$/gm,
+    three_pre_vow: /^(?!dz[ieuo])[gdbm'](?:(?:[kctpzs]h|n[gy]|tsh?|dz)|[kgcjtdnpbzmsh'])[ieou]$/gm,
+    // three_pre_vow: /^[gdbm'](?:[kctpzs]h|n[gy]|tsh?|dz)[iueo]$|^(?!dz[iueo])([gdbm'])[kgcjtdnpbzmsh'][iueo]$/gm,
     // Superscribed with no vowel modifier
     three_supr: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)a?$|^l(?:[kgcjtdpbh]|ng|ch)a?$|^s(?:[kgtdnpbm]|n[gy]|ts)a?)$/gm,
     // three_supr: /^(r(?:[kgjtdnbm]|n[gy]|ts|dz))a?$|^(l(?:[kgcjtdpbh]|ng|ch))a?$|^(s(?:[kgtdnpbm]|n[gy]|ts)a?)$/gm,
