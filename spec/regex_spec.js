@@ -20,6 +20,117 @@ function addvow() {
     return result;
 }
 
+var supr_suf_vow = [
+    "lcong", "lcung", "ldeng", "lding", "ldong", "ldung", "lheng",
+    "lhing", "lhong", "lhung", "ljong", "lkung", "lteng", "ltong",
+    "ltung", "rdeng", "rding", "rdong", "rdung", "rdzing", "rdzong",
+    "rdzung", "rgong", "rjeng", "rjing", "rkeng", "rkong", "rming",
+    "rmong", "rnying", "rnyong", "rteng", "rting", "rtseng", "rtsing",
+    "rtsong", "rtung", "sbong", "sbung", "sdeng", "sding", "sdong",
+    "sdung", "sgeng", "sgong", "sgung", "skeng", "skong", "skung",
+    "smeng", "snong", "snyeng", "snying", "snyong", "snyung", "sping",
+    "spong", "spung", "steng", "sting", "stong", "stung", "lbub",
+    "lbur", "lceb", "lceg", "lces", "lcib", "lcid", "lcig",
+    "lcim", "lcin", "lcog", "lcud", "lcug", "lcum", "lcus",
+    "ldeb", "ldeg", "ldel", "ldem", "lden", "lder", "ldes",
+    "ldib", "ldig", "ldil", "ldim", "ldir", "ldob", "ldod",
+    "ldog", "ldom", "ldon", "ldud", "ldug", "ldum", "ldur",
+    "ldus", "lges", "lgob", "lgun", "lheb", "lhem", "lhen",
+    "lhes", "lhob", "lhod", "lhog", "lhon", "lhor", "lhos",
+    "lhub", "lhud", "lhug", "lhun", "lhur", "lhus", "ljen",
+    "ljib", "ljid", "ljig", "ljin", "ljob", "ljon", "ljur",
+    "lkob", "lkog", "lkol", "lkug", "lngem", "lngog", "lngum",
+    "lteb", "ltem", "ltes", "ltib", "ltig", "ltir", "ltob",
+    "ltod", "ltog", "ltol", "ltor", "ltos", "ltug", "ltun",
+    "rbod", "rbud", "rdeb", "rdeg", "rdel", "rden", "rdib",
+    "rdig", "rdis", "rdob", "rdod", "rdog", "rdol", "rdom",
+    "rdor", "rdos", "rdub", "rdug", "rdul", "rdum", "rdun",
+    "rdur", "rdzes", "rdzig", "rdzim", "rdzis", "rdzob", "rdzod",
+    "rdzog", "rdzor", "rdzos", "rdzub", "rdzun", "rdzus", "rgen",
+    "rgod", "rgog", "rgol", "rgom", "rgon", "rgud", "rgum",
+    "rgun", "rgur", "rje'", "rjed", "rjen", "rjer", "rjes",
+    "rjib", "rjid", "rjig", "rjin", "rjob", "rjod", "rjon",
+    "rjud", "rked", "rken", "rkod", "rkog", "rkol", "rkom",
+    "rkon", "rkos", "rkub", "rkug", "rkum", "rkun", "rkur",
+    "rkus", "rmed", "rmeg", "rmel", "rmen", "rmes", "rmig",
+    "rmin", "rmis", "rmod", "rmog", "rmon", "rmos", "rmug",
+    "rmun", "rmur", "rmus", "rnged", "rngen", "rnges", "rngob",
+    "rngod", "rngog", "rngol", "rngom", "rngon", "rngos", "rngub",
+    "rngud", "rngul", "rngum", "rngur", "rngus", "rnil", "rnog",
+    "rnom", "rnon", "rnor", "rnul", "rnur", "rnyed", "rnyes",
+    "rnyid", "rnyil", "rnyis", "rnyob", "rnyog", "rnyon", "rnyos",
+    "rnyum", "rte'", "rtem", "rten", "rtib", "rtig", "rtir",
+    "rtis", "rtob", "rtod", "rtog", "rtol", "rtom", "rton",
+    "rtos", "rtsed", "rtseg", "rtsel", "rtsen", "rtser", "rtses",
+    "rtsib", "rtsid", "rtsig", "rtsil", "rtsim", "rtsin", "rtsir",
+    "rtsis", "rtsob", "rtsod", "rtsog", "rtsol", "rtsom", "rtson",
+    "rtsor", "rtsub", "rtsun", "rtub", "rtug", "rtul", "rtun",
+    "sbeb", "sbed", "sbeg", "sbel", "sben", "sbid", "sbig",
+    "sbin", "sbir", "sbis", "sbob", "sbod", "sbog", "sbol",
+    "sbom", "sbon", "sbor", "sbos", "sbub", "sbud", "sbug",
+    "sbul", "sbun", "sbur", "sbus", "sdeb", "sded", "sdeg",
+    "sdel", "sdem", "sder", "sdes", "sdib", "sdid", "sdig",
+    "sdir", "sdob", "sdod", "sdog", "sdom", "sdon", "sdor",
+    "sdos", "sdub", "sdud", "sdug", "sdul", "sdum", "sdun",
+    "sdur", "sdus", "sged", "sgeg", "sger", "sges", "sgid",
+    "sgig", "sgir", "sgob", "sgod", "sgog", "sgom", "sgon",
+    "sgor", "sgos", "sgub", "sgud", "sgug", "sgul", "sgum",
+    "sgur", "sked", "skeg", "skem", "sker", "skes", "skid",
+    "skod", "skog", "skol", "skom", "skon", "skor", "skos",
+    "skub", "skud", "skug", "skul", "skum", "skun", "skur",
+    "skus", "smed", "smeg", "smel", "smen", "smes", "smig",
+    "smin", "smis", "smob", "smod", "smon", "smos", "smug",
+    "smus", "sned", "sneg", "snel", "snem", "sner", "snes",
+    "sngig", "sngob", "sngod", "sngog", "sngol", "sngom", "sngon",
+    "sngos", "sngug", "sngun", "sngur", "snid", "snob", "snod",
+    "snog", "snol", "snom", "snon", "snor", "snos", "snub",
+    "snud", "snum", "snun", "snur", "snyed", "snyeg", "snyel",
+    "snyem", "snyen", "snyer", "snyes", "snyid", "snyig", "snyil",
+    "snyim", "snyin", "snyob", "snyod", "snyog", "snyol", "snyom",
+    "snyon", "snyor", "snyos", "snyug", "snyun", "sped", "speg",
+    "spel", "spen", "sper", "spes", "spig", "spin", "spir",
+    "spob", "spod", "spog", "spol", "spom", "spon", "spor",
+    "spos", "spub", "spud", "spug", "spul", "spun", "spur",
+    "spus", "steb", "steg", "stem", "sten", "ster", "stes",
+    "stib", "stig", "stim", "stir", "stis", "stob", "stod",
+    "stog", "stom", "ston", "stor", "stos", "stsel", "stsol",
+    "stub", "stud", "stug", "stun",
+];
+
+var supr_suf = [
+    "lbang", "lcang", "lchang", "ldang", "lgang", "lhang", "ljang",
+    "lngang", "ltang", "rdang", "rdzang", "rgang", "rjang", "rkang",
+    "rmang", "rnang", "rnyang", "rtang", "rtsang", "sbang", "sdang",
+    "sgang", "skang", "smang", "snang", "sngang", "snyang", "spang",
+    "stang", "lbab", "lbag", "lbal", "lcag", "lcam", "lcan",
+    "lcar", "ldab", "ldad", "ldag", "ldal", "ldam", "ldan",
+    "ldar", "ldas", "lgam", "lgar", "lgas", "lha'", "lhab",
+    "lhad", "lhag", "lham", "lhan", "lhar", "lhas", "ljab",
+    "ljag", "ljan", "ljar", "lkad", "lkag", "lkal", "lkam",
+    "lkas", "lngan", "lngar", "lngas", "lpag", "ltab", "ltad",
+    "ltag", "ltam", "ltan", "ltar", "ltas", "rbab", "rbad",
+    "rbag", "rdab", "rdag", "rdal", "rdam", "rdar", "rdas",
+    "rdzab", "rdzad", "rdzag", "rdzam", "rdzan", "rdzar", "rdzas",
+    "rgab", "rgad", "rgag", "rgal", "rgan", "rgar", "rgas",
+    "rjan", "rjas", "rkad", "rkag", "rkal", "rkam", "rkan",
+    "rmad", "rmag", "rmal", "rmam", "rman", "rmar", "rmas",
+    "rnab", "rnad", "rnag", "rnal", "rnam", "rnar", "rnas",
+    "rngab", "rngad", "rngal", "rngam", "rngan", "rngas", "rnyab",
+    "rnyad", "rnyan", "rnyas", "rtab", "rtad", "rtag", "rtal",
+    "rtam", "rtan", "rtar", "rtas", "rtsab", "rtsad", "rtsag",
+    "rtsal", "rtsam", "rtsan", "rtsar", "rtsas", "sbab", "sbad",
+    "sbag", "sbal", "sbam", "sban", "sbar", "sbas", "sdad",
+    "sdam", "sdan", "sdar", "sga'", "sgab", "sgag", "sgal",
+    "sgam", "sgar", "skab", "skad", "skag", "skal", "skam",
+    "skan", "skar", "skas", "smad", "smag", "smal", "sman",
+    "smar", "smas", "sna'", "snab", "snad", "snag", "snal",
+    "snam", "snan", "snar", "snas", "snga'", "sngab", "sngag",
+    "sngal", "sngan", "sngar", "sngas", "snyab", "snyad", "snyag",
+    "snyal", "snyam", "snyan", "snyas", "spab", "spad", "spag",
+    "spal", "spam", "span", "spar", "spas", "stab", "stad",
+    "stag", "stan", "star", "stsad", "stsal",
+];
+
 var pre_supr = [
     "'rba", "'rga", "blda", "blta", "brda", "brga", "brnga",
     "brnya", "brta", "bska", "bsta", "grba",
@@ -1291,6 +1402,196 @@ describe("Test Prefix with superscribed with no vowel.", function() {
 
     it("Standard", function() {
         forEach(pre_supr_vow, expect, exp, true);
+    });
+
+    it("Check false positive: prefix superscribed, no wovel", function() {
+        forEach(pre_supr, expect, exp, false);
+    });
+
+    it("Check false positive: 2nd suffix with vowel", function() {
+        forEach(suff2_vow, expect, exp, false);
+    });
+
+    it("Check false positive: 2nd suffix and no vowel", function() {
+        forEach(suff2, expect, exp, false);
+    });
+
+    it("Check false positive: pre-/suffix with vowel", function() {
+        forEach(pre_suf_vow, expect, exp, false);
+    });
+
+    it("Check false positive: pre-/suffix and no vowel", function() {
+        forEach(pre_suf, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub with vowel", function() {
+        forEach(sup_sub_vow, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub and no vowel", function() {
+        forEach(sup_sub, expect, exp, false);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
+        forEach(sin_sub, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    xit("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+});
+
+// rbab, etc
+describe("Test superscibed with suffix and no vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.supr_suf;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(supr_suf, expect, exp, true);
+    });
+
+    it("Check false positive: prefix, superscribed and vowel", function() {
+        forEach(pre_supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: prefix superscribed, no wovel", function() {
+        forEach(pre_supr, expect, exp, false);
+    });
+
+    it("Check false positive: 2nd suffix with vowel", function() {
+        forEach(suff2_vow, expect, exp, false);
+    });
+
+    it("Check false positive: 2nd suffix and no vowel", function() {
+        forEach(suff2, expect, exp, false);
+    });
+
+    it("Check false positive: pre-/suffix with vowel", function() {
+        forEach(pre_suf_vow, expect, exp, false);
+    });
+
+    it("Check false positive: pre-/suffix and no vowel", function() {
+        forEach(pre_suf, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub with vowel", function() {
+        forEach(sup_sub_vow, expect, exp, false);
+    });
+
+    it("Check false positive: super, sub and no vowel", function() {
+        forEach(sup_sub, expect, exp, false);
+    });
+
+    it("Check false positive: subscribed and no vowel", function() {
+        forEach(sin_sub, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed with vowel", function() {
+        forEach(supr_vow, expect, exp, false);
+    });
+
+    it("Check false positive: superscribed and no vowel", function() {
+        forEach(supr, expect, exp, false);
+    });
+
+    it("Check false positive: prefix with vowel", function() {
+        forEach(pre_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: has prefix and no vowel", function() {
+        forEach(pre, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(sin_vow, expect, exp, false);
+    });
+
+    it("Checks for false positives: common vowel modifer", function() {
+        forEach(singlevow, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix and no vowel", function() {
+        forEach(reg.alph, expect, exp, false);
+    });
+
+    it("Checks for false positives: no prefix with common vowel", function() {
+        forEach(reg.alpha, expect, exp, false);
+    });
+
+    xit("Checks for false positives: has suffix", function() {
+        forEach(["brag", "gsar", "'las"], expect, exp, false);
+    });
+
+    it("Checks for false positives: has suffix", function() {
+        forEach(["reg", "ser", "khor", "zhir"], expect, exp, false);
+    });
+
+});
+
+// rbob, etc
+describe("Test superscibed with suffix and vowel.", function() {
+
+    var singlevow = [];
+    var exp = r.supr_suf_vow;
+
+    beforeEach(function() {
+        singlevow = addvow();
+    });
+
+
+    it("Standard", function() {
+        forEach(supr_suf_vow, expect, exp, true);
+    });
+
+    it("Check false positive: superscribed, suffix no vowel", function() {
+        forEach(supr_suf, expect, exp, false);
+    });
+
+    it("Check false positive: prefix, superscribed and vowel", function() {
+        forEach(pre_supr_vow, expect, exp, false);
     });
 
     it("Check false positive: prefix superscribed, no wovel", function() {

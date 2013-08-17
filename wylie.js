@@ -120,6 +120,10 @@ var regex = {
     pre_supr: /^(?!dz)a?[gdbm'](?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?$/gm,
     // prefix, superscribed with vowel
     pre_supr_vow: /^(?!dz[ieuo])[gdbm'](?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))[ieuo]$/gm,
+    // superscribed with suffix and no vowel
+    supr_suf: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?(?:[gdnbm'rls]|ng)$/gm,
+    // superscribed with suffix and vowel
+    supr_suf_vow: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))[iueo](?:[gdnbm'rls]|ng)$/gm
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
