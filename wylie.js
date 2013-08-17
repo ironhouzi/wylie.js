@@ -101,9 +101,10 @@ var regex = {
     three_supr_vow: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))[iueo]$/gm,
     // three_supr_vow: /^(r(?:[kgjtdnbm]|n[gy]|ts|dz))[iueo]$|^(l(?:[kgcjtdpbh]|ng|ch))[iueo]$|^(s(?:[kgtdnpbm]|n[gy]|ts)[iueo])$/gm,
     // Subscribed with no vowel modifier
-    three_sub: /^(?:[kgpbmh]|[kp]h)ya?$|^(?:[kgtdnpbmsh]|[ktp]h)ra?$|^[kgbrsz]la?$|^(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)wa?$/gm,
+    three_sub: /^(?:(?:[kgpbmh]|[kp]h)y|(?:[kgtdnpbmsh]|[ktp]h)r|[kgbrsz]l|(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)w)a?$/gm,
+    // three_sub: /^(?:[kgpbmh]|[kp]h)ya?$|^(?:[kgtdnpbmsh]|[ktp]h)ra?$|^[kgbrsz]la?$|^(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)wa?$/gm,
     // Subscribed with common vowel modifier
-    three_sub_vow: /^(?:[kgpbmh]|[kp]h)y[iueo]?$|^(?:[kgtdnpbmsh]|[ktp]h)r[iueo]?$|^[kgbrsz]l[iueo]?$|^(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)w[iueo]?$/gm,
+    three_sub_vow: /^(?:(?:[kgpbmh]|[kp]h)y|(?:[kgtdnpbmsh]|[ktp]h)r|[kgbrsz]l|(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)w)[iueo]$/gm,
     // Supersribed and subscribed with no vowel modifier
     sup_sub: /^(r([kgbm]ya?|[kgnbm]ra?|[kgb]la?|(?:[kg]|ts|ny)wa?))$|^(l([kgpbh]ya?|[kgdpbh]ra?|[kgb]la?|[kgdlh]wa?))$|^(s([kgpbm]ya?|[kgtdnpbm]ra?|[kgb]la?|[kgd](?:ts|ny)wa?))$/gm,
     // Supersribed and subscribed with common vowel modifier
