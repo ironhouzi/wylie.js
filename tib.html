@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Tibetan Unicode test of corner case stacks</title>
+    <script type="text/javascript">
+
+      function handleKeyCode(e) {
+        document.execCommand( "insertText", false, toUni(e.keyCode))
+      }
+
+      function toUni(keyVal) {
+        var x = "0";
+        x += (keyVal + 3840).toString(16);
+        console.log(x);
+        return String.fromCharCode(parseInt(x, 16));
+      }
+    </script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <p>&#x0f67;&#x0fb9;&#x0fa8;&#x0fb3;&#x0fba;&#x0fbc;&#x0fbb;&#x0f83;&#x0f0b;&#x0f4a;&#x0f9b;&#x0f9c;&#x0f9d;&#x0f9e;&#x0f71; </p>
+    <div id="text" class="tib" contenteditable="true" onkeydown="handleKeyCode(event);">
+      &#x0f67;&#x0fb9;&#x0fa8;&#x0fb3;&#x0fba;&#x0fbc;&#x0fbb;&#x0f83;&#x0f0b;&#x0f4a;&#x0f9b;&#x0f9c;&#x0f9d;&#x0f9e;&#x0f71;
+    </div>
+    </body>
+</html>
