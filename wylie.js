@@ -124,7 +124,9 @@ var regex = {
     // superscribed with suffix and no vowel
     supr_suf: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))a?(?:[gdnbm'rls]|ng)$/gm,
     // superscribed with suffix and vowel
-    supr_suf_vow: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))[iueo](?:[gdnbm'rls]|ng)$/gm
+    supr_suf_vow: /^(?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))[iueo](?:[gdnbm'rls]|ng)$/gm,
+    // prefix, superscribed, subscribed and no vowel
+    pre_supr_sub: /^(?!dz)a?[gdbm'](?:r(?:[kgjtdnbm]|n[gy]|ts|dz)|l(?:[kgcjtdpbh]|ng|ch)|s(?:[kgtdnpbm]|n[gy]|ts))(?:(?:[kgpbmh]|[kp]h)y|(?:[kgtdnpbmsh]|[ktp]h)r|[kgbrsz]l|(?:[kgdzrlh]|[kzs]h|(ts)h?|ny)w)a?$/gm
 };
 
 // Returns 1 if single character, 2 if multi and 0 for no match.
